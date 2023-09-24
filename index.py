@@ -61,7 +61,10 @@ palavras_positivas = {
     "gostei": 1,
     "interessantíssimo": 3,
     "impecável": 2,
-    "impecáveis": 3
+    "impecáveis": 3, 
+    "show": 3,
+    "insano": 3,
+
 }
 
 #Dicionário Negativo
@@ -142,7 +145,8 @@ frases_negativas = [
     r'Um verdadeiro fiasco do início ao fim',
     r'Decepcionante em todos os aspectos, não gostei',
     r'Um filme confuso e arrastado que me deixou entediado',
-    r'Uma obra cinematográfica lamentável, não recomendo'
+    r'Uma obra cinematográfica lamentável, não recomendo',
+    r'deixa a desejar'
 ]
 
 # Frases positivas
@@ -165,7 +169,10 @@ frases_positivas = [
     r'Um dos melhores filmes que já tive o prazer de assistir',
     r'Esta produção é uma pérola entre as películas',
     r'A cinematografia deste filme é deslumbrante',
-    r'Uma história fascinante que cativou meu coração'
+    r'Uma história fascinante que cativou meu coração',
+    r'Recomendo muito',
+    r'assistir novamente',
+    r'interpretação impecável'
 ]
 
 class AdoroCinema:
@@ -297,7 +304,14 @@ class AdoroCinema:
         return sentimentos
     
     def gerarArquivoFinal(self, listaResultado):
-        print(listaResultado)
+        nomeArquivo = "arquivo_final_analise.txt" 
+        arquivo = open(nomeArquivo, 'w', encoding='utf-8')
+        
+        for resultado in listaResultado:
+            arquivo.write(resultado + '\n\n')
+
+        arquivo.close()
+        print(f'Arquivo {nomeArquivo} gerado com sucesso.')
 
 
 filme = input('Digite o código do filme, conforme listado na barra de endereço do site https://www.adorocinema.com/: ')
